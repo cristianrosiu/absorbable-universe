@@ -4,6 +4,6 @@ Introducing "Absorbable Universe", an engaging and educational game that transpo
 
 In "Absorbable Universe", players will interact with asteroids by dragging them towards the black hole, altering their trajectories and ultimately, feeding the ever-hungry cosmic abyss. Our game offers an authentic representation of black hole physics, utilizing real-life calculations to accurately simulate the gravitational pull exerted on celestial bodies.
 
-Embark on an extraordinary adventure that not only entertains but also enriches your understanding of the universe's most fascinating mysteries. Master the cosmic dance and become the ultimate gravitational force in "Cosmic Gravity"!
+Embark on an extraordinary adventure that not only entertains but also enriches your understanding of the universe's most fascinating mysteries. Master the cosmic dance and become the ultimate gravitational force in "Absorbable Universe"!
 
 ![Gameplay Image](./gameplay.png)
