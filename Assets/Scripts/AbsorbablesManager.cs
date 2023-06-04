@@ -43,4 +43,11 @@ public class AbsorbablesManager : MonoBehaviour
 
         newObject.GetComponent<AbosrbableObject>().Theta = Mathf.Atan2(tangentDir.y, tangentDir.x);
     }
+
+    public void RemoveAllObjects()
+    {
+        var objs = GameObject.FindGameObjectsWithTag("Absorbable");
+        foreach (var obj in objs)
+            if(obj != null) Destroy(obj);
+    }
 }

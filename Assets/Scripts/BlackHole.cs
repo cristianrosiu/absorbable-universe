@@ -3,25 +3,27 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class BlackHole : MonoBehaviour
 {
     [SerializeField] private float m = 1000;             // Mass of black-hole
+
+    public float M
+    {
+        get => m;
+        set => m = value;
+    }
+
     [SerializeField] private float maxMass = 5f;
     [SerializeField] private float radiationRate = 1f;
+
     private const float LightSpeedSq = Utils.C * Utils.C;
 
     [SerializeField] private GameObject eventHorizonGFX;
     [SerializeField] private GameObject firstDiskGFX;
     [SerializeField] private GameObject secondDiskGFX;
-
-    public GameObject obj;
-    public float M => m;
-
-    public void Awake()
-    {
-        
-    }
+    
 
     private void Update()
     {
@@ -32,13 +34,17 @@ public class BlackHole : MonoBehaviour
 
     private void Radiate()
     {
-        m = Mathf.Clamp(m - radiationRate * Time.deltaTime, 0, maxMass); ;
+        m = Mathf.Clamp(m - radiationRate * Time.deltaTime, 0, maxMass);
         
     }
 
     private void AddMass(float value)
     {
         m = Mathf.Clamp(m + value, 0, maxMass);
+
+        if (Singleton.Instance.ScoreManager.score < m || m >= maxMass - 1)
+            Singleton.Instance.ScoreManager.ChangeScore((int)value);
+
     }
     private void PullAllObjects()
     {
@@ -76,7 +82,7 @@ public class BlackHole : MonoBehaviour
         return 2 * Utils.G * M / LightSpeedSq;
     }
 
-    public void UpdateGFX()
+    private void UpdateGFX()
     {
         eventHorizonGFX.transform.localScale = new Vector3(GetEventHorizon(), GetEventHorizon(), 0f);
         firstDiskGFX.transform.localScale = new Vector3(GetEventHorizon()*1.5f, GetEventHorizon()*1.5f, 0f);
